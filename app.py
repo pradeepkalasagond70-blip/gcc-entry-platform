@@ -20,8 +20,14 @@ st.markdown(
         width: 100% !important;
         padding: 0 !important;
       }
-      [data-testid="stHeader"] { background: transparent; }
-      [data-testid="stToolbar"] { right: 0.5rem; }
+      /* Hide Streamlit's host toolbar so its Share/star/edit/GitHub icons do not
+         overlap the embedded GCC LaunchOS interface. */
+      [data-testid="stHeader"],
+      [data-testid="stToolbar"],
+      [data-testid="stDecoration"],
+      [data-testid="stStatusWidget"],
+      #MainMenu,
+      footer { visibility: hidden !important; height: 0 !important; display: none !important; }
       iframe[title="streamlit.components.v1.html"] {
         display: block;
         width: 100% !important;
