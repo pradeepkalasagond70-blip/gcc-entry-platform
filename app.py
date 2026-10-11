@@ -17,6 +17,12 @@ if not HTML_PATH.exists():
 
 html = HTML_PATH.read_text(encoding="utf-8")
 
+# Streamlit embeds HTML in an iframe. The original prototype switches to a
+# compact top-navigation layout below 1000px; Streamlit's iframe can report a
+# narrower viewport than the visible browser window. Lower that breakpoint so
+# the intended desktop left-sidebar layout remains visible on desktop screens.
+html = html.replace("@media(max-width:1000px)", "@media(max-width:700px)")
+
 # Embed the self-contained HTML prototype. The prototype's own CSS and JavaScript
 # provide its interface; Streamlit is only being used as the hosting shell.
-components.html(html, height=1050, scrolling=True)
+components.html(html, height=1800, scrolling=True)
